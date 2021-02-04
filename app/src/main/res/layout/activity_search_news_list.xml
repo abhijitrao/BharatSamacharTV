@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchNewsList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:background="@color/colorPrimary"
+        android:layout_height="55dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:layout_weight="0.5"
+            android:layout_height="55dp">
+
+            <ImageView
+                android:id="@+id/backpress"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_arrow_back_24"
+                android:layout_height="30dp"/>
+
+            <ImageView
+                android:id="@+id/mainLogo_Img"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/logo"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_height="50dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:layout_weight="0.5"
+            android:layout_height="55dp">
+
+            <ImageView
+                android:id="@+id/liveTV_Img"
+                android:layout_width="100dp"
+                android:src="@drawable/live_tv_ic"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:layout_height="35dp"/>
+
+            <ImageView
+                android:id="@+id/searchImg"
+                android:layout_width="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/search_ic"
+                android:layout_height="25dp"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searchLY"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:background="@drawable/search_bg"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/search_NewsET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:hint="Search..."
+                android:inputType="text"
+                android:drawablePadding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/searchImgLY"
+            android:layout_width="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:src="@drawable/search_ic"
+                android:layout_height="25dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/topNewsRecycler"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="5dp"
+                android:elevation="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                app:cardElevation="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/bigNewLY"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/bigNewImg"
+                        android:src="@drawable/logo"
+                        android:visibility="visible"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_height="230dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/bigNewCategoryTT"
+                                android:layout_width="wrap_content"
+                                android:text="Duniya"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="25dp"
+                                android:textColor="@color/light_red"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_weight="0.5"
+                            android:gravity="end"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/bigNewPostTT"
+                                android:layout_width="wrap_content"
+                                android:text="1 DAY AGO"
+                                android:textSize="12sp"
+                                android:layout_marginRight="25dp"
+                                android:textStyle="bold"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/bigNewsHeadingTT"
+                        android:layout_width="match_parent"
+                        android:text="Loading..."
+                        android:visibility="visible"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/first_item_layout"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/home"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/nestedScroll"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:layout_height="50dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.7"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="14dp"
+                            android:src="@drawable/breaking_new_img"
+                            android:layout_height="match_parent"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.3"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/flashNewsTT"
+                            android:layout_width="match_parent"
+                            android:text="Delhi CM gives orders for MBBS student,dentists to assist doctors in Covid treatment"
+                            android:textSize="14sp"
+                            android:ellipsize="marquee"
+                            android:singleLine="true"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:addStatesFromChildren="false"
+                    android:background="@color/colorPrimary">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/breaking_bg"
+                        android:gravity="center"
+                        android:text="Top News"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autoText="false"
+                        android:background="@color/colorPrimary"
+                        android:text="View  All"
+                        android:textAlignment="textEnd"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:cardElevation="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/topHeaderNewsLY"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/topnewImg"
+                            android:src="@drawable/logo"
+                            android:visibility="visible"
+                            android:scaleType="fitXY"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_height="230dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_weight="0.5"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/topCategoryTT"
+                                    android:layout_width="wrap_content"
+                                    android:text="Duniya"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="25dp"
+                                    android:textColor="@color/light_red"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_weight="0.5"
+                                android:gravity="end"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/topPostTT"
+                                    android:layout_width="wrap_content"
+                                    android:text="1 DAY AGO"
+                                    android:textSize="12sp"
+                                    android:layout_marginRight="25dp"
+                                    android:textStyle="bold"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/topHeadingTT"
+                            android:layout_width="match_parent"
+                            android:text="Loading..."
+                            android:visibility="visible"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/topNewsRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimary">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/breaking_bg"
+                        android:gravity="center"
+                        android:text="देश"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="View More"
+                        android:textAlignment="textEnd"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/deshRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:text="राज्य"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:background="@drawable/breaking_bg"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rajyaRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"/>
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:layout_marginBottom="5dp"-->
+<!--                    android:background="@color/colorPrimary"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="140dp"-->
+<!--                        android:text="उत्तर प्रदेश"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:background="@drawable/breaking_bg"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                </LinearLayout>-->
+<!--              .............................................................  jh-->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs_layout_up"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabGravity="center"
+                    android:visibility="gone"
+                    app:tabBackground="@color/colorPrimary"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/MineCustomTabText"
+                    android:background="#66FFFFFF"
+                    app:tabIndicator="@color/white"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabMode="scrollable"
+                    app:tabTextColor="@color/white" />
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager_up"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_height="450dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="gone"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:text="उत्तर प्रदेश"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:background="@drawable/breaking_bg"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs_layout"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabGravity="center"
+                    app:tabBackground="@color/light_red"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/MineCustomTabText"
+                    android:background="#66FFFFFF"
+                    app:tabIndicator="@color/white"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabMode="scrollable"
+                    app:tabTextColor="@color/white" />
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager_"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_height="450dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/videoTitle"
+                        android:layout_width="wrap_content"
+                        android:text="Video"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:background="@drawable/breaking_bg"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/specialVideoRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
