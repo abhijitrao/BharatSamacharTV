@@ -25,6 +25,7 @@ import com.google.gson.JsonObject;
 import com.wts.bharatsamachar.adapter.TabAdapter;
 import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 import com.wts.bharatsamachar.utils.ads.AdsManager;
 
@@ -38,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AdsAppCompactActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AdapterView.OnItemSelectedListener{
+        AdapterView.OnItemSelectedListener, AppCallback.OnViewMoreListener {
 
     public DrawerLayout drawer;
     NavigationView navigationView;
@@ -357,5 +358,10 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onViewMoreClicked(View view, int pos) {
+        viewPager.setCurrentItem(pos);
     }
 }

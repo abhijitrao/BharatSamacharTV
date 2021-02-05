@@ -2,10 +2,12 @@ package com.wts.bharatsamachar.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.wts.bharatsamachar.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -27,8 +29,20 @@ public class RetrofitClient {
                 .baseUrl(BASE_URL).client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
+                .client(getHttpClient(BuildConfig.DEBUG).build())
                 .build();
     }
+
+    private static OkHttpClient.Builder getHttpClient(boolean isDebug) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        if (isDebug) {
+            builder.addInterceptor(loggingInterceptor);
+        }
+        return builder;
+    }
+
+    private static final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+
 
     public static synchronized RetrofitClient getInstance() {
         if (mInstance == null) {

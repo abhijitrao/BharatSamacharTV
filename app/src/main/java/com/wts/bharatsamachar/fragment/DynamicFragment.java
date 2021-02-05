@@ -2,6 +2,7 @@ package com.wts.bharatsamachar.fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ import com.wts.bharatsamachar.adapter.VideoAdapter;
 import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.model.NewListModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.onClickInterface;
 
@@ -77,6 +79,7 @@ public class DynamicFragment extends Fragment {
     NestedScrollView layout;
 
     TextView bigNewCategoryTT,bigNewPostTT,bigNewsHeadingTT;
+    private AppCallback.OnViewMoreListener mListener;
 
     @Nullable
     @Override
@@ -110,6 +113,33 @@ public class DynamicFragment extends Fragment {
         bigNewsHeadingTT = view.findViewById(R.id.bigNewsHeadingTT);
         bigNewLY = view.findViewById(R.id.bigNewLY);
         layout = view.findViewById(R.id.layout);
+
+        (view.findViewById(R.id.layout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onViewMoreClicked(v, 0);
+                }
+            }
+        });
+
+        (view.findViewById(R.id.tv_view_more_1)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onViewMoreClicked(v, 1);
+                }
+            }
+        });
+
+        (view.findViewById(R.id.tv_view_more_2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onViewMoreClicked(v, 2);
+                }
+            }
+        });
 
         tabLayout.setupWithViewPager(viewPager);
 
@@ -599,5 +629,13 @@ public class DynamicFragment extends Fragment {
         args.putString("tocheck", tochek);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof AppCallback.OnViewMoreListener) {
+            mListener = (AppCallback.OnViewMoreListener) context;
+        }
     }
 }

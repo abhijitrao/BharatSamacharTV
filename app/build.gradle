@@ -61,6 +61,7 @@ dependencies {
 
     implementation 'com.github.appsfeature:YTPlayer:1.6'
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.3'
     implementation "com.google.firebase:firebase-analytics:$rootProject.ext.fbs_library_version_analytics"
 
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'

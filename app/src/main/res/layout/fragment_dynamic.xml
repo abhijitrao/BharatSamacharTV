@@ -201,13 +201,13 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/tv_view_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:autoText="false"
                         android:background="@color/colorPrimary"
                         android:text="View  All"
+                        android:layout_marginRight="16dp"
                         android:textAlignment="textEnd"
                         android:textColor="#FFFFFF" />
 
@@ -329,11 +329,12 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_view_more_1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="View More"
+                        android:layout_marginRight="16dp"
                         android:textAlignment="textEnd"
                         android:textColor="#FFFFFF" />
 
@@ -364,6 +365,16 @@
                         android:background="@drawable/breaking_bg"
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tv_view_more_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="View More"
+                        android:layout_marginRight="16dp"
+                        android:textAlignment="textEnd"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
 
