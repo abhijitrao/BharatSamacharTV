@@ -17,4 +17,8 @@ public interface AppConstant {
         String TEST_ID_NATIVE_ADVANCED = "ca-app-pub-3940256099942544/2247696110";
         String TEST_ID_NATIVE_UNIFIED_VIDEO = "ca-app-pub-3940256099942544/1044960115";
     }
+
+
+    String NO_DATA = "No Data";
+    String NO_INTERNET_CONNECTION = "No Internet Connection";
 }

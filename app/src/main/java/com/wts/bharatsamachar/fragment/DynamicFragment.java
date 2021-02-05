@@ -1,7 +1,6 @@
 package com.wts.bharatsamachar.fragment;
 
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,6 +79,7 @@ public class DynamicFragment extends Fragment {
 
     TextView bigNewCategoryTT,bigNewPostTT,bigNewsHeadingTT;
     private AppCallback.OnViewMoreListener mListener;
+    private View viewNoData;
 
     @Nullable
     @Override
@@ -101,6 +101,7 @@ public class DynamicFragment extends Fragment {
         viewpager_up = view.findViewById(R.id.viewpager_up);
         videoTitle = view.findViewById(R.id.videoTitle);
         topHeaderNewsLY = view.findViewById(R.id.topHeaderNewsLY);
+        viewNoData = view.findViewById(R.id.ll_no_data);
 
         topnewImg = view.findViewById(R.id.topnewImg);
         topCategoryTT = view.findViewById(R.id.topCategoryTT);
@@ -185,12 +186,16 @@ public class DynamicFragment extends Fragment {
         });
 
     }
+    private void showProgressBar(boolean isVisible) {
+        if (isVisible) {
+            SupportUtil.showNoDataProgress(viewNoData);
+        } else {
+            SupportUtil.showNoData(viewNoData, View.GONE);
+        }
+    }
 
     private void getBreakingNews() {
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getBreaking();
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -204,33 +209,28 @@ public class DynamicFragment extends Fragment {
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                         String breaking = jsonObject.getString("breaking_news");
                         flashNewsTT.setText(breaking);
-                        progressDialog.dismiss();
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 Log.e("hsdshhdflhsd", t.toString());
-                progressDialog.dismiss();
+                showProgressBar(false);
             }
         });
     }
 
     private void getRajyaNews() {
         rajyaNewsArray.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getRajyaNews();
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -260,33 +260,28 @@ public class DynamicFragment extends Fragment {
                         rajyaRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
                         rajyaRecycler.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 Log.e("hsdshhdflhsd", t.toString());
-                progressDialog.dismiss();
+                showProgressBar(false);
             }
         });
     }
 
     private void getDeshNews() {
         deshNewsArray.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getDeshNews();
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -316,33 +311,28 @@ public class DynamicFragment extends Fragment {
                         deshRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
                         deshRecycler.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 Log.e("hsdshhdflhsd", t.toString());
-                progressDialog.dismiss();
+                showProgressBar(false);
             }
         });
     }
 
     private void getTopNew() {
         topNewsArray.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getTopNews();
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -395,23 +385,21 @@ public class DynamicFragment extends Fragment {
                         topNewsRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
                         topNewsRecycler.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 Log.e("hsdshhdflhsd", t.toString());
-                progressDialog.dismiss();
+                showProgressBar(false);
             }
         });
 
@@ -419,10 +407,7 @@ public class DynamicFragment extends Fragment {
 
     private void getNewListData() {
         arrayList.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getNewList(categoryId);
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -470,20 +455,18 @@ public class DynamicFragment extends Fragment {
                         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
-                        progressDialog.dismiss();
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                progressDialog.dismiss();
+                showProgressBar(false);
                 Log.e("tyuioiuyfyui", t.toString());
             }
         });
@@ -491,10 +474,7 @@ public class DynamicFragment extends Fragment {
 
     private void getVideo() {
         specialVideoArray.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getVideoData();
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -528,23 +508,21 @@ public class DynamicFragment extends Fragment {
                         specialVideoRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
                         specialVideoRecycler.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 Log.e("hsdshhdflhsd", t.toString());
-                progressDialog.dismiss();
+                showProgressBar(false);
             }
         });
 
@@ -552,10 +530,7 @@ public class DynamicFragment extends Fragment {
 
     private void getSubNewsData() {
         arrayList.clear();
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+        showProgressBar(true);
         Call<JsonObject> call = RetrofitClient.getInstance().getApi().getSubCatNewsData(categoryId);
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -603,20 +578,18 @@ public class DynamicFragment extends Fragment {
                         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                        progressDialog.dismiss();
                     } else {
-                        progressDialog.dismiss();
                         Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    progressDialog.dismiss();
                 }
+                showProgressBar(false);
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                progressDialog.dismiss();
+                showProgressBar(false);
                 Log.e("tyuioiuyfyui", t.toString());
             }
         });
@@ -632,7 +605,7 @@ public class DynamicFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof AppCallback.OnViewMoreListener) {
             mListener = (AppCallback.OnViewMoreListener) context;

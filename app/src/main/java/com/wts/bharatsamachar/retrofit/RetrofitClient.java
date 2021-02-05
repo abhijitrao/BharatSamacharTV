@@ -21,15 +21,15 @@ public class RetrofitClient {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(7000, TimeUnit.SECONDS)
-                .readTimeout(7000, TimeUnit.SECONDS).build();
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .connectTimeout(7000, TimeUnit.SECONDS)
+//                .readTimeout(7000, TimeUnit.SECONDS).build();
 
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(BASE_URL).client(client)
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .client(getHttpClient(BuildConfig.DEBUG).build())
+//                .client(getHttpClient(BuildConfig.DEBUG).build())
                 .build();
     }
 

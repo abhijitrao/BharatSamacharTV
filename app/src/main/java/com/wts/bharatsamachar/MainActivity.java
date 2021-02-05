@@ -294,7 +294,6 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
                                 categoryModel.setCatName(category_name);
                                 categoryarrayList.add(0,categoryModel);
                             }
-                            viewPager.setCurrentItem(0);
                             tabLayout.addTab(tabLayout.newTab().setText(category_name));
                         }
                         TabAdapter adapter = new TabAdapter
@@ -302,6 +301,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
                         viewPager.setAdapter(adapter);
                         viewPager.setOffscreenPageLimit(1);
                         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                        viewPager.setCurrentItem(0);
                         progressDialog.dismiss();
                     } else {
                         Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,5 @@
 package com.wts.bharatsamachar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,21 +12,21 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.wts.bharatsamachar.utils.SocialUtil;
+import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
 public class DetailPage extends AdsAppCompactActivity {
 
     WebView browser;
-    ProgressDialog progressDialog;
     ImageView backpress,liveTV_Img,searchImg,mainLogo_Img;
+    private View viewNoData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_page);
+        viewNoData = findViewById(R.id.ll_no_data);
         backpress = findViewById(R.id.backpress);
         liveTV_Img = findViewById(R.id.liveTV_Img);
         searchImg = findViewById(R.id.searchImg);
@@ -40,11 +39,6 @@ public class DetailPage extends AdsAppCompactActivity {
             browser.getSettings().setJavaScriptEnabled(true);
             browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
             browser.getSettings().setDomStorageEnabled(true);
-            progressDialog = new ProgressDialog(DetailPage.this);
-            progressDialog.setMessage("Loading....");
-            progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Large);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
             browser.setWebViewClient(new DetailPage.MyWebViewClient(this));
             browser.loadUrl(loadUrl);
         }catch (Exception e){
@@ -96,13 +90,13 @@ public class DetailPage extends AdsAppCompactActivity {
         @Override
         public void onPageCommitVisible(WebView view, String url) {
             super.onPageCommitVisible(view, url);
-            progressDialog.dismiss();
+            SupportUtil.showNoData(viewNoData, View.GONE);
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            progressDialog.dismiss();
+            SupportUtil.showNoData(viewNoData, View.GONE);
 //            webView.setVisibility(View.VISIBLE);
 //            if (!isUrlPdfType(url))
 //                view.loadUrl("javascript:console.log('" + TAG + "'+document.getElementsByTagName('html')[0].innerHTML);");
@@ -115,9 +109,7 @@ public class DetailPage extends AdsAppCompactActivity {
     }
 
     private boolean shouldOverrideUrl(WebView view, String requestUrl) {
-        if(progressDialog != null && progressDialog.isShowing()){
-            progressDialog.dismiss();
-        }
+        SupportUtil.showNoData(viewNoData, View.GONE);
         if (requestUrl.endsWith("viewer.action=download")) {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(requestUrl));
