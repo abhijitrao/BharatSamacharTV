@@ -16,6 +16,8 @@ import com.wts.bharatsamachar.utils.SocialUtil;
 import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
+///Detail Page
+
 public class DetailPage extends AdsAppCompactActivity {
 
     WebView browser;
