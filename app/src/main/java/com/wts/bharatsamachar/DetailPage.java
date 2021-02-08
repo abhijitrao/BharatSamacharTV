@@ -35,7 +35,7 @@ public class DetailPage extends AdsAppCompactActivity {
 
         try {
             final String url=getIntent().getExtras().getString("id");
-            String loadUrl = "https://www.bharatsamachartv.in/web/webnewsdetails/"+url;
+            String loadUrl = "https://www.bharatsamachartv.in/web/webnewsdetails/" + url;
             browser = findViewById(R.id.webview);
             browser.getSettings().setLoadsImagesAutomatically(true);
             browser.getSettings().setJavaScriptEnabled(true);

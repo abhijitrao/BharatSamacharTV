@@ -6,6 +6,7 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -26,10 +27,13 @@ public class SupportUtil {
 
     public static CharSequence convertDate(String datetime){
         long timeInMillis = 0;
-        if (dateFormat == null) {
-            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);//.parse(datetime);
-        }
         try {
+            if(TextUtils.isEmpty(datetime)){
+               return "";
+            }
+            if (dateFormat == null) {
+                dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);//.parse(datetime);
+            }
             Date date = dateFormat.parse(datetime);
             if(date != null) {
                 timeInMillis = date.getTime();
@@ -47,7 +51,12 @@ public class SupportUtil {
      * i.e: 5 days ago, or 5 minutes ago.
      */
     public static CharSequence convertTimeStamp(long mileSecond){
-        return DateUtils.getRelativeTimeSpanString(mileSecond, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+        try {
+            return DateUtils.getRelativeTimeSpanString(mileSecond, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     public static void showNoData(View view, int visibility) {

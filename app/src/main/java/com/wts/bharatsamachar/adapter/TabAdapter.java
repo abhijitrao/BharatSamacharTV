@@ -17,7 +17,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     String tocheck;
 
     public TabAdapter(FragmentManager fm, int NumOfTabs,ArrayList<CategoryModel> arrayList,String tocheck) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.mNumOfTabs = NumOfTabs;
         this.arrayList = arrayList;
         this.tocheck = tocheck;

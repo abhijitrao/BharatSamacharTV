@@ -4,17 +4,18 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wts.bharatsamachar.BuildConfig;
 
-import java.util.concurrent.TimeUnit;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
     public static final String BASE_URL = "https://www.bharatsamachartv.in/webapi/";
+    public static final String BASE_URL_V2 = "https://bharatsamachartv.in/api/v2/webapi/";
     public static final String IMAGE_URL = "https://www.bharatsamachartv.in/application/libraries/uploads/news_img/";
     private static RetrofitClient mInstance;
+    private static Retrofit retrofitV2;
     private retrofit2.Retrofit retrofit;
 
     private RetrofitClient() {
@@ -29,7 +30,7 @@ public class RetrofitClient {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
-//                .client(getHttpClient(BuildConfig.DEBUG).build())
+                .client(getHttpClient(BuildConfig.DEBUG).build())
                 .build();
     }
 
@@ -51,8 +52,18 @@ public class RetrofitClient {
         return mInstance;
     }
 
-    public interfaceAPI getApi() {
-        return retrofit.create(interfaceAPI.class);
+    public ApiInterface getApi() {
+        return retrofit.create(ApiInterface.class);
     }
 
+    public static Retrofit getClientV2() {
+        if (retrofitV2==null) {
+            retrofitV2 = new Retrofit.Builder()
+                    .baseUrl(BASE_URL_V2)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(getHttpClient(BuildConfig.DEBUG).build())
+                    .build();
+        }
+        return retrofitV2;
+    }
 }

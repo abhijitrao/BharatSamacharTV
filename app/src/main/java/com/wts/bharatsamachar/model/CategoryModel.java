@@ -1,8 +1,21 @@
 package com.wts.bharatsamachar.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class CategoryModel {
 
-    String id,catName,cat_id;
+    @Expose
+    @SerializedName("id")
+    String id;
+
+    @Expose
+    @SerializedName("category_name")
+    String catName;
+
+    @Expose
+    @SerializedName("category_type")
+    String cat_id;
 
     public String getCat_id() {
         return cat_id;

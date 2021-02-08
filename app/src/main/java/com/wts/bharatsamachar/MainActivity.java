@@ -17,13 +17,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonObject;
 import com.wts.bharatsamachar.adapter.TabAdapter;
+import com.wts.bharatsamachar.adapter.ViewPagerAdapter;
+import com.wts.bharatsamachar.fragment.DynamicFragment;
+import com.wts.bharatsamachar.fragment.HomeFragment;
+import com.wts.bharatsamachar.fragment.TabFragment;
 import com.wts.bharatsamachar.model.CategoryModel;
+import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
@@ -33,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -269,57 +276,73 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        Call<JsonObject> call = RetrofitClient.getInstance().getApi().getCategory();
-        call.enqueue(new Callback<JsonObject>() {
+        NetworkManager.getCategory(new AppCallback.Callback<List<CategoryModel>>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                try {
-                    String jsonStr = String.valueOf(response.body());
-                    JSONObject jsobobj = new JSONObject(jsonStr);
-                    String status = jsobobj.getString("status");
-                    if (status.equalsIgnoreCase("success")){
-                        JSONArray jsonArray = jsobobj.getJSONArray("data");
-                        for (int i = 0; i <jsonArray.length(); i++) {
-                            CategoryModel categoryModel = new CategoryModel();
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            String id = jsonObject.getString("id");
-                            String category_name = jsonObject.getString("category_name");
-                            categoryModel.setId(id);
-                            categoryModel.setCatName(category_name);
-                            categoryarrayList.add(categoryModel);
-                            if (i == jsonArray.length() -1){
-                                id = "-1";
-                                category_name = "होम";
-                                categoryModel.setId(id);
-                                categoryModel.setCatName(category_name);
-                                categoryarrayList.add(0,categoryModel);
-                            }
-                            tabLayout.addTab(tabLayout.newTab().setText(category_name));
-                        }
-                        TabAdapter adapter = new TabAdapter
-                                (getSupportFragmentManager(), tabLayout.getTabCount(), categoryarrayList,"main");
-                        viewPager.setAdapter(adapter);
-                        viewPager.setOffscreenPageLimit(1);
-                        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-                        viewPager.setCurrentItem(0);
-                        progressDialog.dismiss();
-                    } else {
-                        Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+            public void onSuccess(List<CategoryModel> response) {
+                setupViewPager(response, progressDialog);
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Exception e) {
                 Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                Log.e("hsdshhdflhsd",t.toString());
                 progressDialog.dismiss();
             }
         });
+    }
+
+    private void setupViewPager(List<CategoryModel> mList, ProgressDialog progressDialog) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager() , mList.size());
+        Bundle bundle ;
+        CategoryModel categoryModel = new CategoryModel();
+        categoryModel.setId("-1");
+        categoryModel.setCat_id("-1");
+        categoryModel.setCatName("होम");
+        mList.add(0, categoryModel);
+
+        for (CategoryModel child : mList ) {
+            Fragment fragment;
+            if(child.getCat_id().equalsIgnoreCase("-1")) {
+                fragment = new HomeFragment();
+            }else {
+                fragment = new TabFragment();
+            }
+            bundle = new Bundle();
+            bundle.putString("someInt", child.getId());
+            bundle.putString("tocheck", "main");
+            fragment.setArguments(bundle);
+            adapter.addFrag(fragment , child.getCatName());
+            tabLayout.addTab(tabLayout.newTab().setText(child.getCatName()));
+        }
+        viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(1);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.setCurrentItem(0);
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+
+//        for (int i = 0; i <mList.size(); i++) {
+//            CategoryModel categoryModel = new CategoryModel();
+//            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//            String id = jsonObject.getString("id");
+//            String category_name = jsonObject.getString("category_name");
+//            categoryModel.setId(id);
+//            categoryModel.setCatName(category_name);
+//            categoryarrayList.add(categoryModel);
+//            if (i == jsonArray.length() -1){
+//                id = "-1";
+//                category_name = "होम";
+//                categoryModel.setId(id);
+//                categoryModel.setCatName(category_name);
+//                categoryarrayList.add(0,categoryModel);
+//            }
+//            tabLayout.addTab(tabLayout.newTab().setText(category_name));
+//        }
+//        TabAdapter adapter = new TabAdapter
+//                (getSupportFragmentManager(), tabLayout.getTabCount(), categoryarrayList,"main");
+//        viewPager.setAdapter(adapter);
+//        viewPager.setOffscreenPageLimit(1);
+//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
     @Override

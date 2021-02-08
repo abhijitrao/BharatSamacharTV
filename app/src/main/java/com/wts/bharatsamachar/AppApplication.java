@@ -6,6 +6,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.onesignal.OneSignal;
+import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.retrofit.ApiInterface;
 import com.wts.bharatsamachar.utils.AppConstant;
 
 
@@ -16,6 +18,7 @@ import com.wts.bharatsamachar.utils.AppConstant;
 public class AppApplication extends Application {
     private static AppApplication appApplication;
     private static final String ONESIGNAL_APP_ID = "670ebe9a-ea45-46c5-b6f2-05a0b0c805dd";
+    private ApiInterface apiInterface;
 
     public static AppApplication getInstance() {
         return appApplication;
@@ -27,6 +30,7 @@ public class AppApplication extends Application {
         appApplication = this;
         initAds();
         initOneSignal();
+        apiInterface = getApiInterface();
     }
 
     private void initOneSignal() {
@@ -46,5 +50,13 @@ public class AppApplication extends Application {
                 }
             });
         }
+    }
+
+
+    public ApiInterface getApiInterface() {
+        if(apiInterface == null){
+            apiInterface = RetrofitClient.getClientV2().create(ApiInterface.class);
+        }
+        return apiInterface;
     }
 }

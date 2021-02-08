@@ -24,6 +24,10 @@ public interface AppCallback {
         void onItemClicked(View view, T item);
     }
 
+    interface OnHomeClickListener {
+        void onItemClicked(View view, String id, String image);
+    }
+
     interface OnViewMoreListener {
         void onViewMoreClicked(View view, int pos);
     }

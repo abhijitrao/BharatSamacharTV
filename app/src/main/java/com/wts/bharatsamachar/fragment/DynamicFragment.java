@@ -143,7 +143,16 @@ public class DynamicFragment extends Fragment {
         });
 
         tabLayout.setupWithViewPager(viewPager);
+        return view;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    private void loadData() {
         if (categoryId.equalsIgnoreCase("-1")) {
             home.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
@@ -169,9 +178,7 @@ public class DynamicFragment extends Fragment {
                 startActivity(intent);
             });
         }
-        return view;
     }
-
 
     private void getHomeCode() {
         getTopNew();

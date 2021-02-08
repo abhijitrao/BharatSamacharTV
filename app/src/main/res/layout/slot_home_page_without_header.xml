@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"
+        android:addStatesFromChildren="false"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/breaking_bg"
+            android:gravity="center"
+            android:text="Top News"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="View  All"
+            android:layout_marginRight="16dp"
+            android:textAlignment="textEnd"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_big_news"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardElevation="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_big_news"
+                android:src="@drawable/logo"
+                android:visibility="visible"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="230dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/topCategoryTT"
+                        android:layout_width="wrap_content"
+                        android:text="Duniya"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="25dp"
+                        android:textColor="@color/light_red"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="end"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/topPostTT"
+                        android:layout_width="wrap_content"
+                        android:text="1 DAY AGO"
+                        android:textSize="12sp"
+                        android:layout_marginRight="25dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/topHeadingTT"
+                android:layout_width="match_parent"
+                android:text="Loading..."
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

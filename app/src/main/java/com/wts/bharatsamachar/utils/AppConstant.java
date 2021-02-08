@@ -8,6 +8,7 @@ public interface AppConstant {
     boolean IS_ADS_ENABLED = true;
     String ADS_UNIT_BANNER = "ca-app-pub-4944768838244417/2631884656";
     String ADS_UNIT_INTERSTITIAL = "ca-app-pub-4944768838244417/5683710945";
+    String SUCCESS = "success";
 
     interface AdsTestIds {
         String TEST_ID_APP = "ca-app-pub-3940256099942544~3347511713";
