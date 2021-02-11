@@ -9,19 +9,25 @@ import com.onesignal.OneSignal;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
 import com.wts.bharatsamachar.retrofit.ApiInterface;
 import com.wts.bharatsamachar.utils.AppConstant;
+import com.wts.bharatsamachar.utils.TrackingApp;
 
 
 /**
  * Created by amit on 12/1/17.
  */
 
-public class AppApplication extends Application {
+public class AppApplication extends TrackingApp {
     private static AppApplication appApplication;
     private static final String ONESIGNAL_APP_ID = "670ebe9a-ea45-46c5-b6f2-05a0b0c805dd";
     private ApiInterface apiInterface;
 
     public static AppApplication getInstance() {
         return appApplication;
+    }
+
+    @Override
+    public boolean isDebugMode() {
+        return BuildConfig.DEBUG;
     }
 
     @Override
