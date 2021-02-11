@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import com.wts.bharatsamachar.adapter.NewListAdapter;
 import com.wts.bharatsamachar.model.NewListModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
@@ -36,7 +36,6 @@ public class CategoryShow extends AdsAppCompactActivity {
     RecyclerView recyclerView;
     ArrayList<NewListModel> arrayList = new ArrayList<>();
     String categoryId,typeStr;
-    ImageView backpress,liveTV_Img,searchImg,mainLogo_Img;
 
     ImageView topnewImg;
     TextView topCategoryTT,topPostTT,topHeadingTT;
@@ -46,18 +45,14 @@ public class CategoryShow extends AdsAppCompactActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_show);
         recyclerView = findViewById(R.id.recyclerView);
-        backpress = findViewById(R.id.backpress);
-        liveTV_Img = findViewById(R.id.liveTV_Img);
-        searchImg = findViewById(R.id.searchImg);
-        mainLogo_Img = findViewById(R.id.mainLogo_Img);
 
         topnewImg = findViewById(R.id.topnewImg);
         topCategoryTT = findViewById(R.id.topCategoryTT);
         topPostTT = findViewById(R.id.topPostTT);
         topHeadingTT = findViewById(R.id.topHeadingTT);
 
-        categoryId = getIntent().getStringExtra("catId");
-        typeStr = getIntent().getStringExtra("type");
+        categoryId = getIntent().getStringExtra(AppConstant.CAT_ID);
+        typeStr = getIntent().getStringExtra(AppConstant.TYPE);
 
         if (typeStr.equalsIgnoreCase("category")){
             getNewListData();
@@ -66,16 +61,15 @@ public class CategoryShow extends AdsAppCompactActivity {
         }
 
 
-        backpress.setOnClickListener(v -> onBackPressed());
+        (findViewById(R.id.backpress)).setOnClickListener(v -> onBackPressed());
 
-        liveTV_Img.setOnClickListener(v -> startActivity(new Intent(CategoryShow.this,LiveTV.class)));
+        (findViewById(R.id.liveTV_Img)).setOnClickListener(v -> startActivity(new Intent(CategoryShow.this,LiveTV.class)));
 
-        searchImg.setOnClickListener(v -> {
+        (findViewById(R.id.searchImg)).setOnClickListener(v -> {
             Intent intent = new Intent(CategoryShow.this,SearchNewsList.class);
             startActivity(intent);
         });
-        mainLogo_Img = findViewById(R.id.mainLogo_Img);
-        mainLogo_Img.setOnClickListener(v -> {
+        (findViewById(R.id.mainLogo_Img)).setOnClickListener(v -> {
             Intent intent = new Intent(CategoryShow.this,MainActivity.class);
             startActivity(intent);
         });

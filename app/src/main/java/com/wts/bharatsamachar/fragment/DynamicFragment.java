@@ -34,6 +34,7 @@ import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.model.NewListModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
 import com.wts.bharatsamachar.utils.AppCallback;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.onClickInterface;
 
@@ -85,7 +86,7 @@ public class DynamicFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dynamic, container, false);
-        categoryId = getArguments().getString("someInt", "");
+        categoryId = getArguments().getString(AppConstant.CAT_ID, "");
         toCheck = getArguments().getString("tocheck", "");
         flashNewsTT = view.findViewById(R.id.flashNewsTT);
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -605,7 +606,7 @@ public class DynamicFragment extends Fragment {
     public static DynamicFragment addfrag(String val,String tochek) {
         DynamicFragment fragment = new DynamicFragment();
         Bundle args = new Bundle();
-        args.putString("someInt", val);
+        args.putString(AppConstant.CAT_ID, val);
         args.putString("tocheck", tochek);
         fragment.setArguments(args);
         return fragment;

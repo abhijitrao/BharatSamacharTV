@@ -20,6 +20,7 @@ import com.wts.bharatsamachar.beans.entity.CategoriesWiseNewsEntity;
 import com.wts.bharatsamachar.beans.entity.DataEntity;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
 
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class TabFragment extends Fragment {
     private List<CategoriesWiseNewsEntity> mList = new ArrayList<>();
     private Activity activity;
     private View viewNoData;
-    private String categoryId, toCheck;
+    private String categoryId;
+    private String type;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,8 +48,8 @@ public class TabFragment extends Fragment {
     private void getIntentData() {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            categoryId = bundle.getString("someInt", "");
-            toCheck = bundle.getString("tocheck", "");
+            categoryId = bundle.getString(AppConstant.CAT_ID, "");
+            type = bundle.getString(AppConstant.TYPE, "");
         }
     }
 
@@ -82,6 +84,11 @@ public class TabFragment extends Fragment {
                 intent.putExtra("id", id);
                 intent.putExtra("img", image);
                 startActivity(intent);
+            }
+
+            @Override
+            public void onViewMoreClicked(View view, int position) {
+
             }
         });
         rvList.setAdapter(adapter);

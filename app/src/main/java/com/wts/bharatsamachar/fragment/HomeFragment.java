@@ -3,6 +3,7 @@ package com.wts.bharatsamachar.fragment;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.wts.bharatsamachar.beans.entity.CategoriesWiseNewsEntity;
 import com.wts.bharatsamachar.beans.entity.DataEntity;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
     private View viewNoData;
     private String categoryId, toCheck;
     private TextView flashNewsTT;
+    private AppCallback.OnViewMoreListener mListener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class HomeFragment extends Fragment {
     private void getIntentData() {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            categoryId = bundle.getString("someInt", "");
+            categoryId = bundle.getString(AppConstant.CAT_ID, "");
             toCheck = bundle.getString("tocheck", "");
         }
     }
@@ -95,6 +98,13 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("img", image);
                 startActivity(intent);
             }
+
+            @Override
+            public void onViewMoreClicked(View view, int position) {
+                if (mListener != null) {
+                    mListener.onViewMoreClicked(view, position);
+                }
+            }
         });
         rvList.setAdapter(adapter);
         flashNewsTT = view.findViewById(R.id.flashNewsTT);
@@ -114,4 +124,12 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof AppCallback.OnViewMoreListener) {
+            mListener = (AppCallback.OnViewMoreListener) context;
+        }
+    }
 }

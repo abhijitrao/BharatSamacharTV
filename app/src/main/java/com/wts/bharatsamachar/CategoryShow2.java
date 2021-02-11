@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import com.wts.bharatsamachar.adapter.NewListAdapter;
 import com.wts.bharatsamachar.model.NewListModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
@@ -55,8 +56,8 @@ public class CategoryShow2 extends AdsAppCompactActivity {
         topPostTT = findViewById(R.id.topPostTT);
         topHeadingTT = findViewById(R.id.topHeadingTT);
 
-        categoryId = getIntent().getStringExtra("catId");
-        typeStr = getIntent().getStringExtra("type");
+        categoryId = getIntent().getStringExtra(AppConstant.CAT_ID);
+        typeStr = getIntent().getStringExtra(AppConstant.TYPE);
 
         if (typeStr.equalsIgnoreCase("category")){
             getNewListData();

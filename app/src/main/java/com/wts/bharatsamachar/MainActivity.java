@@ -21,12 +21,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.wts.bharatsamachar.activity.SubCategoryActivity;
 import com.wts.bharatsamachar.adapter.ViewPagerAdapter;
 import com.wts.bharatsamachar.fragment.HomeFragment;
 import com.wts.bharatsamachar.fragment.TabFragment;
 import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 import com.wts.bharatsamachar.utils.ads.AdsManager;
 
@@ -38,18 +40,18 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
 
     public DrawerLayout drawer;
     NavigationView navigationView;
-    ImageView imgDrawer,liveTV_Img,searchImg;
+    ImageView imgDrawer, liveTV_Img, searchImg;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     ArrayList<CategoryModel> categoryarrayList = new ArrayList<>();
 
     //Side Bar Data
-    LinearLayout subRajyaLayout,subUttarpradeshLy;
-    LinearLayout nav_home,nav_Desh,nav_Rajya,nav_debateWith,nav_up,nav_duniya,nav_manoranjan,
-            nav_khel,nav_corona,nav_video,nav_helth;
+    LinearLayout subRajyaLayout, subUttarpradeshLy;
+    LinearLayout nav_home, nav_Desh, nav_Rajya, nav_debateWith, nav_up, nav_duniya, nav_manoranjan,
+            nav_khel, nav_corona, nav_video, nav_helth;
     TextView versionTT;
-    TextView orPadhe,biharTT,delhiTT,gujratTT;
-    TextView orPadhe2,lkoTT,meerathTT,allahbadTT;
+    TextView orPadhe, biharTT, delhiTT, gujratTT;
+    TextView orPadhe2, lkoTT, meerathTT, allahbadTT;
     //Side Bar Data
 
     @Override
@@ -72,7 +74,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         liveTV_Img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,LiveTV.class));
+                startActivity(new Intent(MainActivity.this, LiveTV.class));
             }
 
         });
@@ -111,142 +113,142 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         getAppVersion();
 
         searchImg.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,SearchNewsList.class);
+            Intent intent = new Intent(MainActivity.this, SearchNewsList.class);
             startActivity(intent);
         });
 
         nav_home.setOnClickListener(v -> drawer.closeDrawer(GravityCompat.START));
 
         orPadhe.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryNews.class);
-            intent.putExtra("type","rajya");
+            Intent intent = new Intent(MainActivity.this, CategoryNews.class);
+            intent.putExtra(AppConstant.TYPE, "rajya");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         orPadhe2.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryNews.class);
-            intent.putExtra("type","up");
+            Intent intent = new Intent(MainActivity.this, CategoryNews.class);
+            intent.putExtra(AppConstant.TYPE, "up");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
 
         nav_Desh.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","21");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "21");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
         nav_debateWith.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","23");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "23");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
         nav_duniya.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","26");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "26");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_manoranjan.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","27");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "27");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_khel.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","28");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "28");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_corona.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","33");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "33");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_video.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","34");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "34");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_helth.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","37");
-            intent.putExtra("type","category");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "37");
+            intent.putExtra(AppConstant.TYPE, "category");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
 
         biharTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","68");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "68");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         delhiTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","53");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "53");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         gujratTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","57");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "57");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
         lkoTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","60");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "60");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         meerathTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","61");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "61");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         allahbadTT.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,CategoryShow.class);
-            intent.putExtra("catId","62");
-            intent.putExtra("type","subcategory");
+            Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
+            intent.putExtra(AppConstant.CAT_ID, "62");
+            intent.putExtra(AppConstant.TYPE, "subcategory");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
 
         nav_Rajya.setOnClickListener(v -> {
-            if (subRajyaLayout.getVisibility() == View.VISIBLE){
+            if (subRajyaLayout.getVisibility() == View.VISIBLE) {
                 subRajyaLayout.setVisibility(View.GONE);
-            }else {
+            } else {
                 subRajyaLayout.setVisibility(View.VISIBLE);
             }
         });
 
         nav_up.setOnClickListener(v -> {
-            if (subUttarpradeshLy.getVisibility() == View.VISIBLE){
+            if (subUttarpradeshLy.getVisibility() == View.VISIBLE) {
                 subUttarpradeshLy.setVisibility(View.GONE);
-            }else {
+            } else {
                 subUttarpradeshLy.setVisibility(View.VISIBLE);
             }
         });
@@ -279,26 +281,26 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
     }
 
     private void setupViewPager(List<CategoryModel> mList, ProgressDialog progressDialog) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager() , mList.size());
-        Bundle bundle ;
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), mList.size());
+        Bundle bundle;
         CategoryModel categoryModel = new CategoryModel();
         categoryModel.setId("-1");
         categoryModel.setCat_id("-1");
         categoryModel.setCatName("होम");
         mList.add(0, categoryModel);
 
-        for (CategoryModel child : mList ) {
+        for (CategoryModel child : mList) {
             Fragment fragment;
-            if(child.getCat_id().equalsIgnoreCase("-1")) {
+            if (child.getCat_id().equalsIgnoreCase("-1")) {
                 fragment = new HomeFragment();
-            }else {
+            } else {
                 fragment = new TabFragment();
             }
             bundle = new Bundle();
-            bundle.putString("someInt", child.getId());
+            bundle.putString(AppConstant.CAT_ID, child.getId());
             bundle.putString("tocheck", "main");
             fragment.setArguments(bundle);
-            adapter.addFrag(fragment , child.getCatName());
+            adapter.addFrag(fragment, child.getCatName());
             tabLayout.addTab(tabLayout.newTab().setText(child.getCatName()));
         }
         viewPager.setAdapter(adapter);

@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.wts.bharatsamachar.adapter.TabAdapter;
 import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
+import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
 import org.json.JSONArray;
@@ -47,7 +48,7 @@ public class CategoryNews extends AdsAppCompactActivity {
         searchImg = findViewById(R.id.searchImg);
         mainLogo_Img = findViewById(R.id.mainLogo_Img);
 
-        type = getIntent().getStringExtra("type");
+        type = getIntent().getStringExtra(AppConstant.TYPE);
         if (type.equalsIgnoreCase("up")){
             getSubCategory();
         }else {

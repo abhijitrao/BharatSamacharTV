@@ -137,18 +137,23 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             recyclerView = view.findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
             cvBigNews.setOnClickListener(this);
+            tvViewAll.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            if(mList.size() > getAdapterPosition() && getAdapterPosition() >= 0) {
-                String id = mList.get(getAdapterPosition()).getId();
-                callback.onItemClicked(v, id, null);
+            if (mList.size() > getAdapterPosition() && getAdapterPosition() >= 0) {
+                if (v.getId() == R.id.tv_view_all) {
+                    callback.onViewMoreClicked(v, getAdapterPosition());
+                } else {
+                    String id = mList.get(getAdapterPosition()).getId();
+                    callback.onItemClicked(v, id, null);
+                }
             }
         }
     }
 
-    public static class VideoViewHolder extends RecyclerView.ViewHolder {
+    public class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView tvCategory;
         private final TextView tvViewAll;
         private final RecyclerView recyclerView;
@@ -159,7 +164,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvViewAll = view.findViewById(R.id.tv_view_all);
             recyclerView = view.findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
+            tvViewAll.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            if (mList.size() > getAdapterPosition() && getAdapterPosition() >= 0) {
+                if (v.getId() == R.id.tv_view_all) {
+                    callback.onViewMoreClicked(v, getAdapterPosition());
+                }
+            }
+        }
     }
 }
