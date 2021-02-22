@@ -87,7 +87,6 @@ public class HomeFragment extends Fragment {
         NetworkManager.getHomeNews(new AppCallback.Callback<HomeDataEntity>() {
             @Override
             public void onSuccess(HomeDataEntity response) {
-                setBreakingNews(response.getBreakingNewsEntity());
                 loadList(response.getCategoriesWiseNewsEntity());
             }
 
