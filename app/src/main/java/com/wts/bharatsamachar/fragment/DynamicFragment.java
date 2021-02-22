@@ -341,7 +341,7 @@ public class DynamicFragment extends Fragment {
     private void getTopNew() {
         topNewsArray.clear();
         showProgressBar(true);
-        Call<JsonObject> call = RetrofitClient.getInstance().getApi().getTopNews();
+        Call<JsonObject> call = RetrofitClient.getInstance().getApi().getTopNews1();
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {

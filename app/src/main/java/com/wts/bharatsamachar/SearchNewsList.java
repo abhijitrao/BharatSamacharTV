@@ -139,7 +139,7 @@ public class SearchNewsList extends AdsAppCompactActivity {
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        Call<JsonObject> call = RetrofitClient.getInstance().getApi().getTopNews();
+        Call<JsonObject> call = RetrofitClient.getInstance().getApi().getTopNews1();
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {

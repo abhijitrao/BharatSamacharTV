@@ -17,7 +17,6 @@ import com.wts.bharatsamachar.DetailPage;
 import com.wts.bharatsamachar.R;
 import com.wts.bharatsamachar.adapter.HomePageAdapter;
 import com.wts.bharatsamachar.beans.entity.CategoriesWiseNewsEntity;
-import com.wts.bharatsamachar.beans.entity.DataEntity;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;

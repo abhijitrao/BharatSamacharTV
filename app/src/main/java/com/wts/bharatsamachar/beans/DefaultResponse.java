@@ -2,13 +2,12 @@ package com.wts.bharatsamachar.beans;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.wts.bharatsamachar.beans.entity.HomeDataEntity;
 
-public class HomeDataModel {
+public class DefaultResponse<T> {
 
     @Expose
     @SerializedName("data")
-    private HomeDataEntity data;
+    private T data;
     @Expose
     @SerializedName("message")
     private String message;
@@ -16,11 +15,11 @@ public class HomeDataModel {
     @SerializedName("status")
     private String status;
 
-    public HomeDataEntity getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(HomeDataEntity data) {
+    public void setData(T data) {
         this.data = data;
     }
 

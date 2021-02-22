@@ -12,7 +12,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
     public static final String BASE_URL = "https://www.bharatsamachartv.in/webapi/";
-    public static final String BASE_URL_V2 = "https://bharatsamachartv.in/api/v2/webapi/";
+    public static final String BASE_URL_V3 = "https://bharatsamachartv.in/api/V3/webapi/";
     public static final String IMAGE_URL = "https://www.bharatsamachartv.in/application/libraries/uploads/news_img/";
     private static RetrofitClient mInstance;
     private static Retrofit retrofitV2;
@@ -59,7 +59,7 @@ public class RetrofitClient {
     public static Retrofit getClientV2() {
         if (retrofitV2==null) {
             retrofitV2 = new Retrofit.Builder()
-                    .baseUrl(BASE_URL_V2)
+                    .baseUrl(BASE_URL_V3)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(getHttpClient(BuildConfig.DEBUG).build())
                     .build();

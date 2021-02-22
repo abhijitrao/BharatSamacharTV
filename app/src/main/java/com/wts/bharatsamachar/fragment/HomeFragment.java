@@ -22,7 +22,8 @@ import com.wts.bharatsamachar.R;
 import com.wts.bharatsamachar.adapter.HomePageAdapter;
 import com.wts.bharatsamachar.beans.entity.BreakingNewsEntity;
 import com.wts.bharatsamachar.beans.entity.CategoriesWiseNewsEntity;
-import com.wts.bharatsamachar.beans.entity.DataEntity;
+import com.wts.bharatsamachar.beans.entity.HomeDataEntity;
+import com.wts.bharatsamachar.beans.entity.NewsEntity;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;
@@ -62,13 +63,29 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadData();
+        loadTopNews();
     }
 
-    private void loadData() {
-        NetworkManager.getHomeNews(new AppCallback.Callback<DataEntity>() {
+    private void loadTopNews() {
+        NetworkManager.getTopNews(new AppCallback.Callback<HomeDataEntity>() {
             @Override
-            public void onSuccess(DataEntity response) {
+            public void onSuccess(HomeDataEntity response) {
+                setBreakingNews(response.getBreakingNewsEntity());
+                loadList(response.getTopNews());
+                loadCategoryWiseNews();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                SupportUtil.showNoData(viewNoData, View.VISIBLE);
+            }
+        });
+    }
+
+    private void loadCategoryWiseNews() {
+        NetworkManager.getHomeNews(new AppCallback.Callback<HomeDataEntity>() {
+            @Override
+            public void onSuccess(HomeDataEntity response) {
                 setBreakingNews(response.getBreakingNewsEntity());
                 loadList(response.getCategoriesWiseNewsEntity());
             }
@@ -112,9 +129,19 @@ public class HomeFragment extends Fragment {
         flashNewsTT.setSelected(true);
     }
 
+    private void loadList(NewsEntity item) {
+        mList.clear();
+        CategoriesWiseNewsEntity mItem = new CategoriesWiseNewsEntity();
+        mItem.setCategory_type("1");
+        mItem.setCategory_name("Top News");
+        mItem.setId("0");
+        mItem.setNews(item);
+        mList.add(mItem);
+        adapter.notifyDataSetChanged();
+    }
+
     private void loadList(List<CategoriesWiseNewsEntity> list) {
         SupportUtil.showNoData(viewNoData, View.GONE);
-        mList.clear();
         if (list != null && list.size() > 0) {
             mList.addAll(list);
         }

@@ -5,6 +5,8 @@ import android.app.Application;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.onesignal.OneSignal;
 import com.wts.bharatsamachar.retrofit.RetrofitClient;
 import com.wts.bharatsamachar.retrofit.ApiInterface;
@@ -20,6 +22,18 @@ public class AppApplication extends TrackingApp {
     private static AppApplication appApplication;
     private static final String ONESIGNAL_APP_ID = "670ebe9a-ea45-46c5-b6f2-05a0b0c805dd";
     private ApiInterface apiInterface;
+
+    private Gson gson;
+
+    public Gson getGson() {
+        if(gson == null){
+            gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .serializeNulls()
+                    .create();
+        }
+        return gson;
+    }
 
     public static AppApplication getInstance() {
         return appApplication;

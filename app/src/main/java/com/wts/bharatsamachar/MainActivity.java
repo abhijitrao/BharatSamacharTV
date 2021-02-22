@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.reflect.TypeToken;
 import com.wts.bharatsamachar.activity.SubCategoryActivity;
 import com.wts.bharatsamachar.adapter.ViewPagerAdapter;
 import com.wts.bharatsamachar.fragment.HomeFragment;
@@ -29,6 +31,7 @@ import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;
+import com.wts.bharatsamachar.utils.AppPreferences;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 import com.wts.bharatsamachar.utils.ads.AdsManager;
 
@@ -262,11 +265,27 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
 
 
     private void getCategory() {
+        String categoryJson = AppPreferences.getCategory(this);
+        if(!TextUtils.isEmpty(categoryJson)){
+            List<CategoryModel> response = AppApplication.getInstance().getGson()
+                    .fromJson(categoryJson, new TypeToken<List<CategoryModel>>() {
+                    }.getType());
+            if(response != null) {
+                setupViewPager(response, null);
+            }else {
+                loadCategoryFromServer();
+            }
+        }else {
+            loadCategoryFromServer();
+        }
+    }
+
+    private void loadCategoryFromServer() {
         ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        NetworkManager.getCategory(new AppCallback.Callback<List<CategoryModel>>() {
+        NetworkManager.getCategory(this, new AppCallback.Callback<List<CategoryModel>>() {
             @Override
             public void onSuccess(List<CategoryModel> response) {
                 setupViewPager(response, progressDialog);
