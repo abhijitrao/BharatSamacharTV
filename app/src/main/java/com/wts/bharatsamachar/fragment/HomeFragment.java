@@ -141,13 +141,14 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadList(List<CategoriesWiseNewsEntity> list) {
-        SupportUtil.showNoData(viewNoData, View.GONE);
         if (list != null && list.size() > 0) {
             mList.addAll(list);
         }
         adapter.notifyDataSetChanged();
         if(mList.size() <= 0){
             SupportUtil.showNoData(viewNoData, View.VISIBLE);
+        }else {
+            SupportUtil.showNoData(viewNoData, View.GONE);
         }
     }
 
