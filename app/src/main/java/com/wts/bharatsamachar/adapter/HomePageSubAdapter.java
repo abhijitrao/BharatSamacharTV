@@ -30,6 +30,7 @@ public class HomePageSubAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final AppCallback.OnHomeClickListener callback;
     private final Context context;
     private final int mItemType;
+    private final CategoriesWiseNewsEntity item;
     private List<ListNewsEntity> mList;
 
     public interface ItemType {
@@ -43,9 +44,10 @@ public class HomePageSubAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
 
-    public HomePageSubAdapter(Context context, int mItemType, List<ListNewsEntity> mList, AppCallback.OnHomeClickListener callback) {
+    public HomePageSubAdapter(Context context, int mItemType,CategoriesWiseNewsEntity item, List<ListNewsEntity> mList, AppCallback.OnHomeClickListener callback) {
         this.context = context;
         this.mItemType = mItemType;
+        this.item = item;
         this.mList = mList;
         this.callback = callback;
     }
@@ -72,7 +74,7 @@ public class HomePageSubAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 //                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
                 .into(holder.newsImage);
         holder.newsHeadingTT.setText(mList.get(position).getNews_heading());
-        holder.topCategoryTT.setText(mList.get(position).getPlace_area());
+        holder.topCategoryTT.setText(item.getCategory_name());
         String time = mList.get(position).getPost_date();
         holder.postDateTT.setText(SupportUtil.convertDate(time));
     }

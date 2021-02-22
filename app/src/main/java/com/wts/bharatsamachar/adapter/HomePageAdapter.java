@@ -76,7 +76,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         .load(IMAGE_URL + bigNews.getNews_cover_photo())
 //                        .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
                         .into(viewHolder.ivBigNews);
-                viewHolder.topCategoryTT.setText(bigNews.getPlace_area());
+                viewHolder.topCategoryTT.setText(item.getCategory_name());
                 viewHolder.topHeadingTT.setText(bigNews.getNews_heading());
                 viewHolder.topPostDateTime.setText(SupportUtil.convertDate(bigNews.getPost_date()));
                 viewHolder.cvBigNews.setVisibility(View.VISIBLE);
@@ -84,7 +84,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 viewHolder.cvBigNews.setVisibility(View.GONE);
             }
             if(item.getNews() != null && item.getNews().getListNews() != null && item.getNews().getListNews().size() > 0) {
-                viewHolder.recyclerView.setAdapter(new HomePageSubAdapter(context, HomePageSubAdapter.ItemType.ITEM_TYPE_COMMON, item.getNews().getListNews(), callback));
+                viewHolder.recyclerView.setAdapter(new HomePageSubAdapter(context, HomePageSubAdapter.ItemType.ITEM_TYPE_COMMON,item, item.getNews().getListNews(), callback));
                 viewHolder.recyclerView.setVisibility(View.VISIBLE);
             }else {
                 viewHolder.recyclerView.setVisibility(View.GONE);
@@ -95,7 +95,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             viewHolder.tvCategory.setText(item.getCategory_name());
 
             if(item.getNews() != null && item.getNews().getListNews() != null && item.getNews().getListNews().size() > 0) {
-                viewHolder.recyclerView.setAdapter(new HomePageSubAdapter(context, HomePageSubAdapter.ItemType.ITEM_TYPE_VIDEO, item.getNews().getListNews(), callback));
+                viewHolder.recyclerView.setAdapter(new HomePageSubAdapter(context, HomePageSubAdapter.ItemType.ITEM_TYPE_VIDEO,item, item.getNews().getListNews(), callback));
                 viewHolder.recyclerView.setVisibility(View.VISIBLE);
             }else {
                 viewHolder.recyclerView.setVisibility(View.GONE);

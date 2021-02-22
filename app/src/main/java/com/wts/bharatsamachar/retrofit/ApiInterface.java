@@ -86,6 +86,10 @@ public interface ApiInterface {
     @GET("get_category")
     Call<DefaultResponse<List<CategoryModel>>> getCategory();
 
+    @FormUrlEncoded
+    @POST("get_sub_category")
+    Call<DefaultResponse<List<CategoryModel>>> getSubCategory(@Field("newslist_id") String id);
+
     @GET("get_topnews")
     Call<DefaultResponse<HomeDataEntity>> getTopNews();
 }

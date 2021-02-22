@@ -38,8 +38,7 @@ import com.wts.bharatsamachar.utils.ads.AdsManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AdsAppCompactActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AdapterView.OnItemSelectedListener, AppCallback.OnViewMoreListener {
+public class MainActivity extends AdsAppCompactActivity implements NavigationView.OnNavigationItemSelectedListener, AppCallback.OnViewMoreListener {
 
     public DrawerLayout drawer;
     NavigationView navigationView;
@@ -125,13 +124,13 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
 
         orPadhe.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CategoryNews.class);
-            intent.putExtra(AppConstant.TYPE, "rajya");
+            intent.putExtra(AppConstant.CAT_ID, "22");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         orPadhe2.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, CategoryNews.class);
-            intent.putExtra(AppConstant.TYPE, "up");
+            intent.putExtra(AppConstant.CAT_ID, "25");
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -140,7 +139,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         nav_Desh.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "21");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -148,7 +147,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         nav_debateWith.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "23");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -156,42 +155,42 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         nav_duniya.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "26");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_manoranjan.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "27");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_khel.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "28");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_corona.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "33");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_video.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "34");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         nav_helth.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "37");
-            intent.putExtra(AppConstant.TYPE, "category");
+            intent.putExtra(AppConstant.TYPE, AppConstant.CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -200,21 +199,21 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         biharTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "68");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         delhiTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "53");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         gujratTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "57");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -222,21 +221,21 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
         lkoTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "60");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         meerathTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "61");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
         allahbadTT.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SubCategoryActivity.class);
             intent.putExtra(AppConstant.CAT_ID, "62");
-            intent.putExtra(AppConstant.TYPE, "subcategory");
+            intent.putExtra(AppConstant.TYPE, AppConstant.SUB_CATEGORY);
             startActivity(intent);
             drawer.closeDrawer(GravityCompat.START);
         });
@@ -318,7 +317,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
             }
             bundle = new Bundle();
             bundle.putString(AppConstant.CAT_ID, child.getId());
-            bundle.putString("tocheck", "main");
+            bundle.putString(AppConstant.TITLE, child.getCatName());
             fragment.setArguments(bundle);
             adapter.addFrag(fragment,child.getId(), child.getCatName());
             tabLayout.addTab(tabLayout.newTab().setText(child.getCatName()));
@@ -334,31 +333,9 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //        displaySelectedScreen(item.getItemId());
         return true;
-    }
-
-    private void displaySelectedScreen(int itemId) {
-        switch (itemId) {
-
-            case R.id.nav_home:
-                break;
-
-            default:
-                throw new IllegalStateException("Unexpected value: " + itemId);
-        }
-        drawer.closeDrawer(GravityCompat.START);
     }
 
     public void getAppVersion() {

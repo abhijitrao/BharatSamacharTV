@@ -10,11 +10,15 @@ public class CategoryModel {
     String id;
 
     @Expose
+    @SerializedName("subcategory_name")
+    String subCatName;
+
+    @Expose
     @SerializedName("category_name")
     String catName;
 
     @Expose
-    @SerializedName("category_type")
+    @SerializedName(value="cat_id", alternate={"category_type"})
     String cat_id;
 
     public String getCat_id() {
@@ -39,5 +43,13 @@ public class CategoryModel {
 
     public void setCatName(String catName) {
         this.catName = catName;
+    }
+
+    public String getSubCatName() {
+        return subCatName;
+    }
+
+    public void setSubCatName(String subCatName) {
+        this.subCatName = subCatName;
     }
 }

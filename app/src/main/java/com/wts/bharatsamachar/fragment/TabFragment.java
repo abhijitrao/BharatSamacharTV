@@ -35,6 +35,7 @@ public class TabFragment extends Fragment {
     private View viewNoData;
     private String categoryId;
     private String type;
+    private String title;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class TabFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             categoryId = bundle.getString(AppConstant.CAT_ID, "");
+            title = bundle.getString(AppConstant.TITLE, "");
             type = bundle.getString(AppConstant.TYPE, "");
         }
     }
@@ -62,7 +64,7 @@ public class TabFragment extends Fragment {
     }
 
     private void loadData() {
-        NetworkManager.getNewListV2(categoryId, new AppCallback.Callback<List<CategoriesWiseNewsEntity>>() {
+        NetworkManager.getNewsCategory(categoryId, type, title, new AppCallback.Callback<List<CategoriesWiseNewsEntity>>() {
             @Override
             public void onSuccess(List<CategoriesWiseNewsEntity> response) {
                 loadList(response);

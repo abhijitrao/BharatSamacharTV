@@ -24,4 +24,8 @@ public interface AppConstant {
     String NO_INTERNET_CONNECTION = "No Internet Connection";
     String TYPE = "type";
     String CAT_ID = "catId";
+    String TITLE = "title";
+    String IS_SUB_CAT = "is_sub_cat";
+    String CATEGORY = "category";
+    String SUB_CATEGORY = "subcategory";
 }
