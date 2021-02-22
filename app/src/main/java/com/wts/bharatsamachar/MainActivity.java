@@ -55,6 +55,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
     TextView versionTT;
     TextView orPadhe, biharTT, delhiTT, gujratTT;
     TextView orPadhe2, lkoTT, meerathTT, allahbadTT;
+    private ViewPagerAdapter adapter;
     //Side Bar Data
 
     @Override
@@ -300,7 +301,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
     }
 
     private void setupViewPager(List<CategoryModel> mList, ProgressDialog progressDialog) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), mList.size());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), mList.size());
         Bundle bundle;
         CategoryModel categoryModel = new CategoryModel();
         categoryModel.setId("-1");
@@ -319,7 +320,7 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
             bundle.putString(AppConstant.CAT_ID, child.getId());
             bundle.putString("tocheck", "main");
             fragment.setArguments(bundle);
-            adapter.addFrag(fragment, child.getCatName());
+            adapter.addFrag(fragment,child.getId(), child.getCatName());
             tabLayout.addTab(tabLayout.newTab().setText(child.getCatName()));
         }
         viewPager.setAdapter(adapter);
@@ -371,7 +372,12 @@ public class MainActivity extends AdsAppCompactActivity implements NavigationVie
     }
 
     @Override
-    public void onViewMoreClicked(View view, int pos) {
-        viewPager.setCurrentItem(pos);
+    public void onViewMoreClicked(View view, int pos, String catId) {
+        if(adapter != null) {
+            int index = adapter.getCatPosition(catId);
+            if (index > 0 && index < adapter.getCount()) {
+                viewPager.setCurrentItem(index);
+            }
+        }
     }
 }

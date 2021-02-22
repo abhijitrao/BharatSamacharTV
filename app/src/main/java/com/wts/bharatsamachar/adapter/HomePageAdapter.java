@@ -144,7 +144,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public void onClick(View v) {
             if (mList.size() > getAdapterPosition() && getAdapterPosition() >= 0) {
                 if (v.getId() == R.id.tv_view_all) {
-                    callback.onViewMoreClicked(v, getAdapterPosition());
+                    callback.onViewMoreClicked(v, getAdapterPosition(), mList.get(getAdapterPosition()).getId());
                 } else {
                     String id = mList.get(getAdapterPosition()).getId();
                     callback.onItemClicked(v, id, null);
@@ -171,7 +171,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public void onClick(View v) {
             if (mList.size() > getAdapterPosition() && getAdapterPosition() >= 0) {
                 if (v.getId() == R.id.tv_view_all) {
-                    callback.onViewMoreClicked(v, getAdapterPosition());
+                    callback.onViewMoreClicked(v, getAdapterPosition(), mList.get(getAdapterPosition()).getId());
                 }
             }
         }

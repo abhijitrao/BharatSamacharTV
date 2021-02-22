@@ -21,6 +21,7 @@ import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
+import com.wts.bharatsamachar.utils.TimeValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,9 @@ public class TabFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadData();
+        if(mList.size() == 0 || TimeValidator.newInstance().isValidTimeDiff()) {
+            loadData();
+        }
     }
 
     private void loadData() {
@@ -86,7 +89,7 @@ public class TabFragment extends Fragment {
             }
 
             @Override
-            public void onViewMoreClicked(View view, int position) {
+            public void onViewMoreClicked(View view, int position, String catId) {
 
             }
         });

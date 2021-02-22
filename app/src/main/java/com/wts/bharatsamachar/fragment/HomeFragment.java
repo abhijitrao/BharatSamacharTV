@@ -1,7 +1,6 @@
 package com.wts.bharatsamachar.fragment;
 
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.wts.bharatsamachar.DetailPage;
 import com.wts.bharatsamachar.R;
 import com.wts.bharatsamachar.adapter.HomePageAdapter;
@@ -28,6 +26,7 @@ import com.wts.bharatsamachar.retrofit.NetworkManager;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.SupportUtil;
+import com.wts.bharatsamachar.utils.TimeValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +62,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadTopNews();
+        if(mList.size() == 0 || TimeValidator.newInstance().isValidTimeDiff()) {
+            loadTopNews();
+        }
     }
 
     private void loadTopNews() {
@@ -117,9 +118,9 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onViewMoreClicked(View view, int position) {
+            public void onViewMoreClicked(View view, int position, String catId) {
                 if (mListener != null) {
-                    mListener.onViewMoreClicked(view, position);
+                    mListener.onViewMoreClicked(view, position, catId);
                 }
             }
         });

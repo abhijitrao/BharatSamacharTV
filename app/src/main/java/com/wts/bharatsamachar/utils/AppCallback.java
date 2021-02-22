@@ -26,11 +26,11 @@ public interface AppCallback {
 
     interface OnHomeClickListener {
         void onItemClicked(View view, String id, String image);
-        void onViewMoreClicked(View view, int position);
+        void onViewMoreClicked(View view, int position, String catId);
     }
 
     interface OnViewMoreListener {
-        void onViewMoreClicked(View view, int pos);
+        void onViewMoreClicked(View view, int pos, String catId);
     }
 
     interface OnListClickListener<T> {

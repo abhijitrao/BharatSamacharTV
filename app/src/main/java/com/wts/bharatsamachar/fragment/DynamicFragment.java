@@ -120,7 +120,7 @@ public class DynamicFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-                    mListener.onViewMoreClicked(v, 0);
+                    mListener.onViewMoreClicked(v, 0, "0");
                 }
             }
         });
@@ -129,7 +129,7 @@ public class DynamicFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-                    mListener.onViewMoreClicked(v, 1);
+                    mListener.onViewMoreClicked(v, 1, "0");
                 }
             }
         });
@@ -138,7 +138,7 @@ public class DynamicFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-                    mListener.onViewMoreClicked(v, 2);
+                    mListener.onViewMoreClicked(v, 2, "0");
                 }
             }
         });
