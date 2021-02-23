@@ -12,8 +12,8 @@ android {
         applicationId "com.uttarpradeshtv"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 24
-        versionName "2.0.4"
+        versionCode 30
+        versionName "3.0.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

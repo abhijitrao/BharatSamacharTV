@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "326106023472",
-    "firebase_url": "https://uptv-204c5-550c2.firebaseio.com",
-    "project_id": "uptv-204c5",
-    "storage_bucket": "uptv-204c5.appspot.com"
+    "project_number": "275780814414",
+    "project_id": "bharat-samachar-ebfcf",
+    "storage_bucket": "bharat-samachar-ebfcf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:326106023472:android:f53c6d6cd7b905ab",
+        "mobilesdk_app_id": "1:275780814414:android:174ac89003f4bdfa1aa51f",
         "android_client_info": {
           "package_name": "com.uttarpradeshtv"
         }
       },
       "oauth_client": [
         {
-          "client_id": "326106023472-appv0rf9aua5q683vbl9rttggbfg1ufr.apps.googleusercontent.com",
+          "client_id": "275780814414-4vppula9idqdi14heq5u4jj41lbs57p6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDO-XPpfn4Evk8R4KDksrlZdcT0d-Qxakg"
+          "current_key": "AIzaSyCx0FPIrXJH-gxi-gB4NzJVprfP-aGP87o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "326106023472-appv0rf9aua5q683vbl9rttggbfg1ufr.apps.googleusercontent.com",
+              "client_id": "275780814414-4vppula9idqdi14heq5u4jj41lbs57p6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

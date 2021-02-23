@@ -3,7 +3,7 @@ package com.wts.bharatsamachar.utils;
 public interface AppConstant {
 
     //    public static final String DEVELOPER_KEY = "AIzaSyDv0n22VHy92VGxQAAvT4GTxJVQ_42ndsY"; //Youtube-Sample
-    String DEVELOPER_KEY = "AIzaSyDO-XPpfn4Evk8R4KDksrlZdcT0d-Qxakg"; //Youtube-live key
+    String DEVELOPER_KEY = "AIzaSyCx0FPIrXJH-gxi-gB4NzJVprfP-aGP87o"; //Youtube-live key
 
     boolean IS_ADS_ENABLED = true;
     String ADS_UNIT_BANNER = "ca-app-pub-4944768838244417/2631884656";
