@@ -25,11 +25,8 @@
         tools:replace="android:theme">
         <activity android:name=".SearchNewsList"/>
         <activity android:name=".CategoryNews" />
-        <activity android:name=".CategoryShow" />
         <activity android:name=".LiveTV" />
         <activity android:name=".DetailPage" />
-        <activity android:name=".VideoPlay" />
-        <activity android:name=".NewDetailsOpen" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activity.SubCategoryActivity" />
         <activity android:name=".SplashScreen">

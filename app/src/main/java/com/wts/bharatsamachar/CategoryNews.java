@@ -3,7 +3,6 @@ package com.wts.bharatsamachar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -11,27 +10,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.JsonObject;
-import com.wts.bharatsamachar.adapter.TabAdapter;
 import com.wts.bharatsamachar.adapter.ViewPagerAdapter;
-import com.wts.bharatsamachar.fragment.HomeFragment;
 import com.wts.bharatsamachar.fragment.TabFragment;
 import com.wts.bharatsamachar.model.CategoryModel;
 import com.wts.bharatsamachar.retrofit.NetworkManager;
-import com.wts.bharatsamachar.retrofit.RetrofitClient;
 import com.wts.bharatsamachar.utils.AppCallback;
 import com.wts.bharatsamachar.utils.AppConstant;
 import com.wts.bharatsamachar.utils.ads.AdsAppCompactActivity;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CategoryNews extends AdsAppCompactActivity {
 
