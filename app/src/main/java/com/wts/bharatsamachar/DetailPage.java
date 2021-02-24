@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -36,6 +37,7 @@ public class DetailPage extends AdsAppCompactActivity {
         try {
             final String url=getIntent().getExtras().getString("id");
             String loadUrl = "https://www.bharatsamachartv.in/web/webnewsdetails/" + url;
+            Log.d("okhttp", "DetailPage-url:" + loadUrl);
             browser = findViewById(R.id.webview);
             browser.getSettings().setLoadsImagesAutomatically(true);
             browser.getSettings().setJavaScriptEnabled(true);

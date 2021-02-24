@@ -146,8 +146,11 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (v.getId() == R.id.tv_view_all) {
                     callback.onViewMoreClicked(v, getAdapterPosition(), mList.get(getAdapterPosition()).getId());
                 } else {
-                    String id = mList.get(getAdapterPosition()).getId();
-                    callback.onItemClicked(v, id, null);
+                    if(mList.get(getAdapterPosition()).getNews() != null &&  mList.get(getAdapterPosition()).getNews().getBigNews() != null) {
+                        BigNewsEntity bigNews =  mList.get(getAdapterPosition()).getNews().getBigNews();
+                        String id = bigNews.getId();
+                        callback.onItemClicked(v, id, null);
+                    }
                 }
             }
         }
